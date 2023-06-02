@@ -14,6 +14,7 @@ import AutonomousAgent from "../services/agent/autonomous-agent";
 import Expand from "../components/motions/expand";
 import HelpDialog from "../components/dialog/HelpDialog";
 import { SettingsDialog } from "../components/dialog/SettingsDialog";
+import PaymentModal from "../components/dialog/payment";
 import { TaskWindow } from "../components/TaskWindow";
 import { useAuth } from "../hooks/useAuth";
 import type { AgentPlaybackControl, Message } from "../types/agentTypes";
@@ -52,6 +53,7 @@ const Home: NextPage = () => {
 
   const [showHelpDialog, setShowHelpDialog] = React.useState(false);
   const [showSettingsDialog, setShowSettingsDialog] = React.useState(false);
+  const [showPaymentDialog, setShowPaymentDialog] = React.useState(false);
   const [showSignInDialog, setShowSignInDialog] = React.useState(false);
   const [showToolsDialog, setShowToolsDialog] = React.useState(false);
   const [hasSaved, setHasSaved] = React.useState(false);
@@ -204,11 +206,16 @@ const Home: NextPage = () => {
         show={showSettingsDialog}
         close={() => setShowSettingsDialog(false)}
       />
+      <PaymentModal
+        show={showPaymentDialog}
+        close={() => setShowPaymentDialog(false)}
+      />
       <SignInDialog show={showSignInDialog} close={() => setShowSignInDialog(false)} />
       <main className="flex min-h-screen flex-row">
         <Drawer
           showHelp={() => setShowHelpDialog(true)}
           showSettings={() => setShowSettingsDialog(true)}
+          showsubscription={()=> setShowPaymentDialog(true)}
         />
         <div
           id="content"
@@ -347,6 +354,7 @@ const Home: NextPage = () => {
                   })}`
                 )}
               </Button>
+              
             </Expand>
           </div>
         </div>

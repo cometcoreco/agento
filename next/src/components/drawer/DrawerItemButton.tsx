@@ -9,7 +9,7 @@ interface DrawerItemProps {
 }
 
 export const DrawerItemButton = (props: DrawerItemProps) => {
-  const { icon, text, border, onClick } = props;
+  const { icon, text, border, onClick ,style} = props;
 
   return (
     <button
@@ -19,6 +19,8 @@ export const DrawerItemButton = (props: DrawerItemProps) => {
         border && "border border-white/20"
       )}
       onClick={onClick}
+      style={style}
+      
     >
       {icon}
       <span className="ml-4 text-sm">{text}</span>

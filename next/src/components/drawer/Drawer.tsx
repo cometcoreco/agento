@@ -11,6 +11,7 @@ import {
   FaSignOutAlt,
   FaTwitter,
   FaUser,
+  FaCheckCircle 
 } from "react-icons/fa";
 import clsx from "clsx";
 import { useAuth } from "../../hooks/useAuth";
@@ -22,7 +23,7 @@ import { BiPlus } from "react-icons/bi";
 import { DrawerItemButton } from "./DrawerItemButton";
 import { DrawerUrlButton } from "./DrawerUrlButton";
 
-const Drawer = ({ showHelp, showSettings }: { showHelp: () => void; showSettings: () => void }) => {
+const Drawer = ({ showHelp, showSettings,showsubscription }: { showHelp: () => void; showSettings: () => void }) => {
   const [t] = useTranslation("drawer");
   const [showDrawer, setShowDrawer] = useState(true);
   const { session, signIn, signOut, status } = useAuth();
@@ -135,6 +136,12 @@ const Drawer = ({ showHelp, showSettings }: { showHelp: () => void; showSettings
             icon={<FaCog className="transition-transform group-hover:rotate-90" />}
             text={t("SETTINGS_BUTTON")}
             onClick={showSettings}
+          />
+          <DrawerItemButton
+            icon={<FaCheckCircle />}
+            text={t("Subscribe")}
+            onClick={showsubscription}
+            style={{ backgroundColor: "yellow" }}
           />
           <FadingHr className="my-2" />
           <div className="flex flex-row items-center justify-center gap-2">
